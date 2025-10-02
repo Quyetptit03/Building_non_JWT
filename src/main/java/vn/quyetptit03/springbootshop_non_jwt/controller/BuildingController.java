@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import vn.quyetptit03.springbootshop_non_jwt.dto.BuildingDTO;
 import vn.quyetptit03.springbootshop_non_jwt.repository.ConnectJDBC;
+import vn.quyetptit03.springbootshop_non_jwt.service.BuildingService;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,37 +19,17 @@ import java.util.List;
 @RequestMapping("/api/building/")
 public class BuildingController {
 
-    ConnectJDBC connectJDBC = new ConnectJDBC();
-    Connection conn = connectJDBC.connection();
+    private final BuildingService buildingService;
+
+    public BuildingController(BuildingService buildingService) {
+        this.buildingService = buildingService;
+    }
 
     @GetMapping
     public List<BuildingDTO> getBuilding(
          @RequestParam String name
     ) {
-
-        List<BuildingDTO> result = new ArrayList<>();
-
-        String sql = "select * from building where name like '%"+name+"%'";
-        try (
-                Statement stm = conn.createStatement();
-                ResultSet rs = stm.executeQuery(sql);
-                ){
-            while(rs.next()){
-                BuildingDTO buildingDTO = new BuildingDTO();
-                buildingDTO.setName(rs.getString("name"));
-                buildingDTO.setStreet(rs.getString("street"));
-                buildingDTO.setWard(rs.getString("ward"));
-                buildingDTO.setNumberOfBasement(rs.getString("numberofbasement"));
-                result.add(buildingDTO);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Connected database failed!");
-        }
-
-        System.out.println(result.toString());
-        return result;
+        return  buildingService.getBuilding(name);
     }
 
 }

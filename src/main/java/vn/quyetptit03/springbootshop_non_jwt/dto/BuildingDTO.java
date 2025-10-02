@@ -2,17 +2,15 @@ package vn.quyetptit03.springbootshop_non_jwt.dto;
 
 public class BuildingDTO {
     private String name;
-    private String street;
-    private String ward;
+    private String address;
     private String numberOfBasement;
 
     public BuildingDTO() {
     }
 
-    public BuildingDTO(String name, String street, String ward, String numberOfBasement) {
+    public BuildingDTO(String name, String address, String numberOfBasement) {
         this.name = name;
-        this.street = street;
-        this.ward = ward;
+        this.address = address;
         this.numberOfBasement = numberOfBasement;
     }
 
@@ -24,20 +22,12 @@ public class BuildingDTO {
         this.name = name;
     }
 
-    public String getStreet() {
-        return street;
+    public String getAddress() {
+        return address;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getWard() {
-        return ward;
-    }
-
-    public void setWard(String ward) {
-        this.ward = ward;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getNumberOfBasement() {
@@ -46,15 +36,5 @@ public class BuildingDTO {
 
     public void setNumberOfBasement(String numberOfBasement) {
         this.numberOfBasement = numberOfBasement;
-    }
-
-    @Override
-    public String toString() {
-        return "BuildingDTO{" +
-                "name='" + name + '\'' +
-                ", street='" + street + '\'' +
-                ", ward='" + ward + '\'' +
-                ", numberOfBasement='" + numberOfBasement + '\'' +
-                '}';
     }
 }
