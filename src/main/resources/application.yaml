@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: SpringBootShop_non_JWT
+
+server:
+  port: 8081
