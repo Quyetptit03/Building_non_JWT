@@ -1,18 +1,13 @@
 package vn.quyetptit03.springbootshop_non_jwt.controller;
 
-import org.slf4j.ILoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import vn.quyetptit03.springbootshop_non_jwt.dto.BuildingDTO;
-import vn.quyetptit03.springbootshop_non_jwt.repository.ConnectJDBC;
 import vn.quyetptit03.springbootshop_non_jwt.service.BuildingService;
+import vn.quyetptit03.springbootshop_non_jwt.service.impl.BuildingServiceImpl;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,9 +22,10 @@ public class BuildingController {
 
     @GetMapping
     public List<BuildingDTO> getBuilding(
-         @RequestParam String name
+         BuildingDTO buildingDTO
     ) {
-        return  buildingService.getBuilding(name);
+        List<BuildingDTO> result = buildingService.getBuilding(buildingDTO);
+        return  result;
     }
 
 }

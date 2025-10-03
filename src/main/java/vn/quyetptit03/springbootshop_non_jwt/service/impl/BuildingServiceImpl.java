@@ -1,6 +1,5 @@
 package vn.quyetptit03.springbootshop_non_jwt.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.quyetptit03.springbootshop_non_jwt.dto.BuildingDTO;
 import vn.quyetptit03.springbootshop_non_jwt.entity.BuildingEntity;
@@ -20,7 +19,7 @@ public class BuildingServiceImpl implements BuildingService {
     }
 
     @Override
-    public List<BuildingDTO> getBuilding(String name) {
+    public List<BuildingDTO> getBuilding(BuildingDTO name) {
 
         List<BuildingEntity> entities = buildingRepository.findAll(name);
         List<BuildingDTO> dtos = new ArrayList<>();
@@ -29,7 +28,7 @@ public class BuildingServiceImpl implements BuildingService {
             BuildingDTO dto = new BuildingDTO();
             dto.setName(entity.getName());
             dto.setAddress(entity.getStreet() + ", " + entity.getWard());
-            dto.setNumberOfBasement(String.valueOf(entity.getNumberOfBasement()));
+            dto.setNumberOfBasement(entity.getNumberOfBasement());
             dtos.add(dto);
         }
 

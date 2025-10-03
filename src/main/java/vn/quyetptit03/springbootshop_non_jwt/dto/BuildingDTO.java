@@ -3,12 +3,12 @@ package vn.quyetptit03.springbootshop_non_jwt.dto;
 public class BuildingDTO {
     private String name;
     private String address;
-    private String numberOfBasement;
+    private Integer numberOfBasement;
 
     public BuildingDTO() {
     }
 
-    public BuildingDTO(String name, String address, String numberOfBasement) {
+    public BuildingDTO(String name, String address, Integer numberOfBasement) {
         this.name = name;
         this.address = address;
         this.numberOfBasement = numberOfBasement;
@@ -30,11 +30,11 @@ public class BuildingDTO {
         this.address = address;
     }
 
-    public String getNumberOfBasement() {
+    public Integer getNumberOfBasement() {
         return numberOfBasement;
     }
 
-    public void setNumberOfBasement(String numberOfBasement) {
+    public void setNumberOfBasement(Integer numberOfBasement) {
         this.numberOfBasement = numberOfBasement;
     }
 }

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectJDBC {
-    private String DB_URL ="jdbc:mysql://localhost:3306/estatebasic";
+    private String DB_URL ="jdbc:mysql://localhost:3306/estatebasic?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
     private String DB_USER ="root";
     private String DB_PASS ="@Quyet180903";
 
