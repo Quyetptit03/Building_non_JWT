@@ -1,19 +1,116 @@
 package vn.quyetptit03.springbootshop_non_jwt.entity;
 
+import java.sql.Date;
+
 public class BuildingEntity {
+    private Integer id;
+
     private String name;
-    private Integer numberOfBasement;
-    private String ward;
+
     private String street;
+
+    private String ward;
+
+    private String structure;
+
+    private Integer numberofbasement;
+
+    private Integer floorarea;
+
+    private String direction;
+
+    private String level;
+
+    private Integer rentprice;
+
+    private String rentpricedescription;
+
+    private String servicefee;
+
+    private String carfee;
+
+    private String motorbikefee;
+
+    private String overtimefee;
+
+    private String waterfee;
+
+    private String electricityfee;
+
+    private String deposit;
+
+    private String payment;
+
+    private String renttime;
+
+    private String decorationtime;
+
+    private Long brokeragefee;
+
+    private String note;
+
+    private String linkofbuilding;
+
+    private String map;
+
+    private String image;
+
+    private Date createddate;
+
+    private Date modifieddate;
+
+    private String createdby;
+
+    private String modifiedby;
+
+    private String managername;
+
+    private String managerphonenumber;
 
     public BuildingEntity() {
     }
 
-    public BuildingEntity(String name, Integer numberOfBasement, String ward, String street) {
+    public BuildingEntity(Integer id, String name, String street, String ward, String structure, Integer numberofbasement, Integer floorarea, String direction, String level, Integer rentprice, String rentpricedescription, String servicefee, String carfee, String motorbikefee, String overtimefee, String waterfee, String electricityfee, String deposit, String payment, String renttime, String decorationtime, Long brokeragefee, String note, String linkofbuilding, String map, String image, Date createddate, Date modifieddate, String createdby, String modifiedby, String managername, String managerphonenumber) {
+        this.id = id;
         this.name = name;
-        this.numberOfBasement = numberOfBasement;
-        this.ward = ward;
         this.street = street;
+        this.ward = ward;
+        this.structure = structure;
+        this.numberofbasement = numberofbasement;
+        this.floorarea = floorarea;
+        this.direction = direction;
+        this.level = level;
+        this.rentprice = rentprice;
+        this.rentpricedescription = rentpricedescription;
+        this.servicefee = servicefee;
+        this.carfee = carfee;
+        this.motorbikefee = motorbikefee;
+        this.overtimefee = overtimefee;
+        this.waterfee = waterfee;
+        this.electricityfee = electricityfee;
+        this.deposit = deposit;
+        this.payment = payment;
+        this.renttime = renttime;
+        this.decorationtime = decorationtime;
+        this.brokeragefee = brokeragefee;
+        this.note = note;
+        this.linkofbuilding = linkofbuilding;
+        this.map = map;
+        this.image = image;
+        this.createddate = createddate;
+        this.modifieddate = modifieddate;
+        this.createdby = createdby;
+        this.modifiedby = modifiedby;
+        this.managername = managername;
+        this.managerphonenumber = managerphonenumber;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -24,12 +121,12 @@ public class BuildingEntity {
         this.name = name;
     }
 
-    public Integer getNumberOfBasement() {
-        return numberOfBasement;
+    public String getStreet() {
+        return street;
     }
 
-    public void setNumberOfBasement(Integer numberOfBasement) {
-        this.numberOfBasement = numberOfBasement;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getWard() {
@@ -40,11 +137,227 @@ public class BuildingEntity {
         this.ward = ward;
     }
 
-    public String getStreet() {
-        return street;
+    public String getStructure() {
+        return structure;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setStructure(String structure) {
+        this.structure = structure;
+    }
+
+    public Integer getNumberofbasement() {
+        return numberofbasement;
+    }
+
+    public void setNumberofbasement(Integer numberofbasement) {
+        this.numberofbasement = numberofbasement;
+    }
+
+    public Integer getFloorarea() {
+        return floorarea;
+    }
+
+    public void setFloorarea(Integer floorarea) {
+        this.floorarea = floorarea;
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public Integer getRentprice() {
+        return rentprice;
+    }
+
+    public void setRentprice(Integer rentprice) {
+        this.rentprice = rentprice;
+    }
+
+    public String getRentpricedescription() {
+        return rentpricedescription;
+    }
+
+    public void setRentpricedescription(String rentpricedescription) {
+        this.rentpricedescription = rentpricedescription;
+    }
+
+    public String getServicefee() {
+        return servicefee;
+    }
+
+    public void setServicefee(String servicefee) {
+        this.servicefee = servicefee;
+    }
+
+    public String getCarfee() {
+        return carfee;
+    }
+
+    public void setCarfee(String carfee) {
+        this.carfee = carfee;
+    }
+
+    public String getMotorbikefee() {
+        return motorbikefee;
+    }
+
+    public void setMotorbikefee(String motorbikefee) {
+        this.motorbikefee = motorbikefee;
+    }
+
+    public String getOvertimefee() {
+        return overtimefee;
+    }
+
+    public void setOvertimefee(String overtimefee) {
+        this.overtimefee = overtimefee;
+    }
+
+    public String getWaterfee() {
+        return waterfee;
+    }
+
+    public void setWaterfee(String waterfee) {
+        this.waterfee = waterfee;
+    }
+
+    public String getElectricityfee() {
+        return electricityfee;
+    }
+
+    public void setElectricityfee(String electricityfee) {
+        this.electricityfee = electricityfee;
+    }
+
+    public String getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(String deposit) {
+        this.deposit = deposit;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+
+    public String getRenttime() {
+        return renttime;
+    }
+
+    public void setRenttime(String renttime) {
+        this.renttime = renttime;
+    }
+
+    public String getDecorationtime() {
+        return decorationtime;
+    }
+
+    public void setDecorationtime(String decorationtime) {
+        this.decorationtime = decorationtime;
+    }
+
+    public Long getBrokeragefee() {
+        return brokeragefee;
+    }
+
+    public void setBrokeragefee(Long brokeragefee) {
+        this.brokeragefee = brokeragefee;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getLinkofbuilding() {
+        return linkofbuilding;
+    }
+
+    public void setLinkofbuilding(String linkofbuilding) {
+        this.linkofbuilding = linkofbuilding;
+    }
+
+    public String getMap() {
+        return map;
+    }
+
+    public void setMap(String map) {
+        this.map = map;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Date getCreateddate() {
+        return createddate;
+    }
+
+    public void setCreateddate(Date createddate) {
+        this.createddate = createddate;
+    }
+
+    public Date getModifieddate() {
+        return modifieddate;
+    }
+
+    public void setModifieddate(Date modifieddate) {
+        this.modifieddate = modifieddate;
+    }
+
+    public String getCreatedby() {
+        return createdby;
+    }
+
+    public void setCreatedby(String createdby) {
+        this.createdby = createdby;
+    }
+
+    public String getModifiedby() {
+        return modifiedby;
+    }
+
+    public void setModifiedby(String modifiedby) {
+        this.modifiedby = modifiedby;
+    }
+
+    public String getManagername() {
+        return managername;
+    }
+
+    public void setManagername(String managername) {
+        this.managername = managername;
+    }
+
+    public String getManagerphonenumber() {
+        return managerphonenumber;
+    }
+
+    public void setManagerphonenumber(String managerphonenumber) {
+        this.managerphonenumber = managerphonenumber;
     }
 }

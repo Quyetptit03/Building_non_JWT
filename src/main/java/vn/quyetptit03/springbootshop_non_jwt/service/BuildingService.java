@@ -5,5 +5,5 @@ import vn.quyetptit03.springbootshop_non_jwt.dto.BuildingDTO;
 import java.util.List;
 
 public interface BuildingService {
-    List<BuildingDTO> getBuilding(BuildingDTO name);
+    List<BuildingDTO> getBuilding(BuildingDTO buildingDTO);
 }

@@ -6,5 +6,5 @@ import vn.quyetptit03.springbootshop_non_jwt.entity.BuildingEntity;
 import java.util.List;
 
 public interface BuildingRepository {
-    List<BuildingEntity> findAll(BuildingDTO name);
+    List<BuildingEntity> findAll(BuildingDTO buildingDTO);
 }

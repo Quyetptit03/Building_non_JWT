@@ -19,16 +19,23 @@ public class BuildingServiceImpl implements BuildingService {
     }
 
     @Override
-    public List<BuildingDTO> getBuilding(BuildingDTO name) {
+    public List<BuildingDTO> getBuilding(BuildingDTO buildingDTO) {
 
-        List<BuildingEntity> entities = buildingRepository.findAll(name);
+        List<BuildingEntity> entities = buildingRepository.findAll(buildingDTO);
         List<BuildingDTO> dtos = new ArrayList<>();
 
         for (BuildingEntity entity : entities) {
             BuildingDTO dto = new BuildingDTO();
             dto.setName(entity.getName());
             dto.setAddress(entity.getStreet() + ", " + entity.getWard());
-            dto.setNumberOfBasement(entity.getNumberOfBasement());
+            dto.setNumberOfBasement(entity.getNumberofbasement());
+            dto.setManagerName(entity.getManagername());
+            dto.setManagerPhoneNumber(entity.getManagerphonenumber());
+            dto.setFloorArea(entity.getFloorarea());
+            dto.setServiceFee(entity.getServicefee());
+            dto.setRentPrice(entity.getRentprice());
+            dto.setBrokerageFee(entity.getBrokeragefee());
+            dto.setLevel(entity.getLevel());
             dtos.add(dto);
         }
 
