@@ -15,11 +15,12 @@ public class BuildingDTO {
     private Integer rentPrice;
     private Long brokerageFee;
     private String level;
+    private List<String> typeCode;
 
     public BuildingDTO() {
     }
 
-    public BuildingDTO(String name, String address, Integer numberOfBasement, String managerName, String managerPhoneNumber, Integer floorArea, Integer emptyArea, String rentArea, String serviceFee, Integer rentPrice, Long brokerageFee, String level) {
+    public BuildingDTO(String name, String address, Integer numberOfBasement, String managerName, String managerPhoneNumber, Integer floorArea, Integer emptyArea, String rentArea, String serviceFee, Integer rentPrice, Long brokerageFee, String level, List<String> typeCode) {
         this.name = name;
         this.address = address;
         this.numberOfBasement = numberOfBasement;
@@ -32,6 +33,7 @@ public class BuildingDTO {
         this.rentPrice = rentPrice;
         this.brokerageFee = brokerageFee;
         this.level = level;
+        this.typeCode = typeCode;
     }
 
     public String getName() {
@@ -128,5 +130,13 @@ public class BuildingDTO {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public List<String> getTypeCode() {
+        return typeCode;
+    }
+
+    public void setTypeCode(List<String> typeCode) {
+        this.typeCode = typeCode;
     }
 }

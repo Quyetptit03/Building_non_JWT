@@ -126,6 +126,22 @@ public class BuildingRepositoryImpl implements BuildingRepository {
             params.add("%" + dto.getLevel() + "%");
         }
 
+        // 12. join rent type nếu có typeCode
+        boolean joinRentType = false;
+        if (dto.getTypeCode() != null && !dto.getTypeCode().isEmpty()) {
+            joinRentType = true;
+            sql.append(" INNER JOIN buildingrenttype brt ON b.id = brt.buildingid ");
+            sql.append(" INNER JOIN renttype rt ON rt.id = brt.renttypeid ");
+
+            StringBuilder inClause = new StringBuilder();
+            for (int i = 0; i < dto.getTypeCode().size(); i++) {
+                inClause.append("?,");
+                params.add(dto.getTypeCode().get(i));
+            }
+            inClause.deleteCharAt(inClause.length() - 1);
+            where.append(" AND rt.code IN (" + inClause.toString() + ") ");
+        }
+
         // --- Xử lý JOIN và Hoàn thiện Truy vấn ---
 
         // Thêm JOIN vào truy vấn chính nếu có điều kiện tìm kiếm rentArea
