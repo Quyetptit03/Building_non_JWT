@@ -1,76 +1,127 @@
 package vn.quyetptit03.springbootshop_non_jwt.entity;
 
+import jakarta.persistence.*;
+
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name = "building")
 public class BuildingEntity {
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "street")
     private String street;
 
+    @Column(name = "ward")
     private String ward;
 
+    @Column(name = "structure")
     private String structure;
 
-    private Integer numberofbasement;
+    @Column(name = "numberofbasement")
+    private Long numberofbasement;
 
-    private Integer floorarea;
+    @Column(name = "floorarea")
+    private Long floorarea;
 
+    @Column(name = "direction")
     private String direction;
 
+    @Column(name = "level")
     private String level;
 
-    private Integer rentprice;
+    @Column(name = "rentprice")
+    private Long rentprice;
 
+    @Column(name = "rentpricedescription")
     private String rentpricedescription;
 
+    @Column(name = "servicefee")
     private String servicefee;
 
+    @Column(name = "carfee")
     private String carfee;
 
+    @Column(name = "motorbikefee")
     private String motorbikefee;
 
+    @Column(name = "overtimefee")
     private String overtimefee;
 
+    @Column(name = "waterfee")
     private String waterfee;
 
+    @Column(name = "electricityfee")
     private String electricityfee;
 
+    @Column(name = "deposit")
     private String deposit;
 
+    @Column(name = "payment")
     private String payment;
 
+    @Column(name = "renttime")
     private String renttime;
 
+    @Column(name = "decorationtime")
     private String decorationtime;
 
+    @Column(name = "brokeragefee")
     private Long brokeragefee;
 
+    @Column(name = "note")
     private String note;
 
+    @Column(name = "linkofbuilding")
     private String linkofbuilding;
 
+    @Column(name = "map")
     private String map;
 
+    @Column(name = "image")
     private String image;
 
+    @Column(name = "createddate")
     private Date createddate;
 
+    @Column(name = "modifieddate")
     private Date modifieddate;
 
+    @Column(name = "createdby")
     private String createdby;
 
+    @Column(name = "modifiedby")
     private String modifiedby;
 
+    @Column(name = "managername")
     private String managername;
 
+    @Column(name = "managerphonenumber")
     private String managerphonenumber;
+    @ManyToOne
+    @JoinColumn(name = "districtId")
+    private DistrictEntity district;
+
+    @OneToMany(mappedBy = "building", fetch = FetchType.LAZY)
+    private List<RentAreaEntity> rentAreaEntities = new ArrayList<>();
+
+    @OneToMany(mappedBy = "building", fetch = FetchType.LAZY)
+    private List<BuildingRenttypeEntity> buildingRenttypeEntities = new ArrayList<>();
+
+    @OneToMany(mappedBy = "building", fetch = FetchType.LAZY)
+    private List<AssignmentBuildingEntity> assignmentBuildingEntities = new ArrayList<>();
 
     public BuildingEntity() {
     }
 
-    public BuildingEntity(Integer id, String name, String street, String ward, String structure, Integer numberofbasement, Integer floorarea, String direction, String level, Integer rentprice, String rentpricedescription, String servicefee, String carfee, String motorbikefee, String overtimefee, String waterfee, String electricityfee, String deposit, String payment, String renttime, String decorationtime, Long brokeragefee, String note, String linkofbuilding, String map, String image, Date createddate, Date modifieddate, String createdby, String modifiedby, String managername, String managerphonenumber) {
+    public BuildingEntity(Long id, String name, String street, String ward, String structure, Long numberofbasement, Long floorarea, String direction, String level, Long rentprice, String rentpricedescription, String servicefee, String carfee, String motorbikefee, String overtimefee, String waterfee, String electricityfee, String deposit, String payment, String renttime, String decorationtime, Long brokeragefee, String note, String linkofbuilding, String map, String image, Date createddate, Date modifieddate, String createdby, String modifiedby, String managername, String managerphonenumber, DistrictEntity district, List<RentAreaEntity> rentAreaEntities, List<BuildingRenttypeEntity> buildingRenttypeEntities, List<AssignmentBuildingEntity> assignmentBuildingEntities) {
         this.id = id;
         this.name = name;
         this.street = street;
@@ -103,13 +154,17 @@ public class BuildingEntity {
         this.modifiedby = modifiedby;
         this.managername = managername;
         this.managerphonenumber = managerphonenumber;
+        this.district = district;
+        this.rentAreaEntities = rentAreaEntities;
+        this.buildingRenttypeEntities = buildingRenttypeEntities;
+        this.assignmentBuildingEntities = assignmentBuildingEntities;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -145,19 +200,19 @@ public class BuildingEntity {
         this.structure = structure;
     }
 
-    public Integer getNumberofbasement() {
+    public Long getNumberofbasement() {
         return numberofbasement;
     }
 
-    public void setNumberofbasement(Integer numberofbasement) {
+    public void setNumberofbasement(Long numberofbasement) {
         this.numberofbasement = numberofbasement;
     }
 
-    public Integer getFloorarea() {
+    public Long getFloorarea() {
         return floorarea;
     }
 
-    public void setFloorarea(Integer floorarea) {
+    public void setFloorarea(Long floorarea) {
         this.floorarea = floorarea;
     }
 
@@ -177,11 +232,11 @@ public class BuildingEntity {
         this.level = level;
     }
 
-    public Integer getRentprice() {
+    public Long getRentprice() {
         return rentprice;
     }
 
-    public void setRentprice(Integer rentprice) {
+    public void setRentprice(Long rentprice) {
         this.rentprice = rentprice;
     }
 
@@ -359,5 +414,37 @@ public class BuildingEntity {
 
     public void setManagerphonenumber(String managerphonenumber) {
         this.managerphonenumber = managerphonenumber;
+    }
+
+    public DistrictEntity getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(DistrictEntity district) {
+        this.district = district;
+    }
+
+    public List<RentAreaEntity> getRentAreaEntities() {
+        return rentAreaEntities;
+    }
+
+    public void setRentAreaEntities(List<RentAreaEntity> rentAreaEntities) {
+        this.rentAreaEntities = rentAreaEntities;
+    }
+
+    public List<BuildingRenttypeEntity> getBuildingRenttypeEntities() {
+        return buildingRenttypeEntities;
+    }
+
+    public void setBuildingRenttypeEntities(List<BuildingRenttypeEntity> buildingRenttypeEntities) {
+        this.buildingRenttypeEntities = buildingRenttypeEntities;
+    }
+
+    public List<AssignmentBuildingEntity> getAssignmentBuildingEntities() {
+        return assignmentBuildingEntities;
+    }
+
+    public void setAssignmentBuildingEntities(List<AssignmentBuildingEntity> assignmentBuildingEntities) {
+        this.assignmentBuildingEntities = assignmentBuildingEntities;
     }
 }
