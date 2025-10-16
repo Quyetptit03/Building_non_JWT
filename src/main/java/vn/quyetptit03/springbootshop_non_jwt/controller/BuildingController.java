@@ -1,8 +1,8 @@
 package vn.quyetptit03.springbootshop_non_jwt.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import vn.quyetptit03.springbootshop_non_jwt.dto.BuildingDTO;
 import vn.quyetptit03.springbootshop_non_jwt.service.BuildingService;
 
@@ -25,11 +25,44 @@ public class BuildingController {
      * /api/building/?name=Nam Giao&numberOfBasement=2&rentPrice=20000000
      */
     @GetMapping
-    public List<BuildingDTO> getBuilding(
-         BuildingDTO buildingDTO
+    public ResponseEntity<List<BuildingDTO>> getBuilding(
+            @ModelAttribute BuildingDTO buildingDTO
     ) {
         List<BuildingDTO> result = buildingService.getBuilding(buildingDTO);
-        return  result;
+        return ResponseEntity.ok(result);
     }
 
+    @PostMapping
+    public ResponseEntity<String> createBuilding(
+            @RequestBody BuildingDTO buildingDTO
+    ) {
+        buildingService.createBuilding(buildingDTO);
+        return ResponseEntity.ok("Building created successfully!");
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteBuilding(
+            @PathVariable Long id
+    ) {
+        try {
+            buildingService.deleteBuilding(id);
+            return ResponseEntity.ok("Building deleted successfully!");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("ERROR: "+e.getMessage());
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateBuilding(
+            @PathVariable Long id,
+            @RequestBody BuildingDTO buildingDTO) {
+        try {
+            buildingService.updateBuilding(id, buildingDTO);
+            return ResponseEntity.ok("Building updated successfully with id: " + id);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Error: " + e.getMessage());
+        }
+    }
 }

@@ -5,5 +5,8 @@ import vn.quyetptit03.springbootshop_non_jwt.dto.BuildingDTO;
 import java.util.List;
 
 public interface BuildingService {
-    List<BuildingDTO> getBuilding(BuildingDTO buildingDTO);
+    List<BuildingDTO> getBuilding (BuildingDTO buildingDTO);
+    void createBuilding(BuildingDTO buildingDTO);
+    void deleteBuilding(Long id);
+    BuildingDTO updateBuilding(Long id, BuildingDTO buildingDTO);
 }
