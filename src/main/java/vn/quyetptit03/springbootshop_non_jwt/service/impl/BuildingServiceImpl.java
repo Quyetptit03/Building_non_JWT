@@ -78,12 +78,11 @@ public class BuildingServiceImpl implements BuildingService {
     /**
      * @param id          cua toa nha can cap nhat
      * @param buildingDTO du lieu moi
-     * @return DTO sau khi cap nhat
      * @throws RuntimeException neu khong tim thay toa nha
      */
 
     @Override
-    public BuildingDTO updateBuilding(Long id, BuildingDTO buildingDTO) {
+    public void updateBuilding(Long id, BuildingDTO buildingDTO) {
         BuildingEntity existingEntity = buildingRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Building not found with id: " + id));
 
@@ -95,8 +94,29 @@ public class BuildingServiceImpl implements BuildingService {
         existingEntity.setStreet(buildingDTO.getAddress()); // hoặc tách nếu address chứa ward, street
 
         buildingRepository.save(existingEntity);
+    }
 
-        return buildingDTO;
+    @Override
+    public void deleteBuildings(List<Long> ids) {
+        // kiem tra danh sach id co rong khong
+        if(ids == null || ids.isEmpty()) {
+            throw new RuntimeException("Danh sách Id cần xóa đang rỗng");
+        }
+
+        // Kiem tra id co ton tai khong
+        List<Long> list = new ArrayList<>();
+        for (Long id : ids) {
+            if(!buildingRepository.existsById(id)) {
+                list.add(id);
+            }
+        }
+
+        if(!list.isEmpty()) {
+            throw new RuntimeException("Không tìm thấy tòa nhà có ID: "+list);
+        }
+
+        // Neu tat ca ton tai, thuc hien xoa
+        buildingRepository.deleteAllById(ids);
     }
 
     /**

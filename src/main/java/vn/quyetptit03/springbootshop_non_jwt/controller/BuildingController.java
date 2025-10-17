@@ -40,6 +40,19 @@ public class BuildingController {
         return ResponseEntity.ok("Building created successfully!");
     }
 
+    @DeleteMapping
+    public ResponseEntity<String> deleteBuildings(
+        @RequestBody List<Long> ids
+    ){
+        try {
+            buildingService.deleteBuildings(ids);
+            return ResponseEntity.ok("Building deleted "+ids.size()+" successfully!");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("ERROR: " + e.getMessage());
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteBuilding(
             @PathVariable Long id

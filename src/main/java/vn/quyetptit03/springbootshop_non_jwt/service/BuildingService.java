@@ -8,5 +8,6 @@ public interface BuildingService {
     List<BuildingDTO> getBuilding (BuildingDTO buildingDTO);
     void createBuilding(BuildingDTO buildingDTO);
     void deleteBuilding(Long id);
-    BuildingDTO updateBuilding(Long id, BuildingDTO buildingDTO);
+    void updateBuilding(Long id, BuildingDTO buildingDTO);
+    void deleteBuildings(List<Long> ids);
 }
